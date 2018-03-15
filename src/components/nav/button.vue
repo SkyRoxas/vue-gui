@@ -1,10 +1,5 @@
 <script>
 export default {
-  data () {
-    return {
-      val: '儲存'
-    }
-  },
   props: {
     msg: {
       type: String,
@@ -16,7 +11,7 @@ export default {
       on: {
         click: () => this.$emit('click')
       }
-    }, this.val)
+    }, this.msg)
   }
 }
 </script>

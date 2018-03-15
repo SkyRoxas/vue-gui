@@ -1,22 +1,19 @@
 <template>
-
 <div>
-  <img src="@/assets/logo.png">
-  <h1>Welcome to Your Vue.js App</h1>
+  <project></project>
   <router-view></router-view>
 </div>
-
 </template>
 
 <script>
 import layoutSidebar from '@/components/layout/sidebar'
-import formEntries from '@/components/common/form-entries'
+import project from '@/components/projects'
 
 export default {
   name: 'pageIndex',
   components: {
     layoutSidebar,
-    formEntries
+    project
   }
 }
 </script>

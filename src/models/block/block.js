@@ -1,9 +1,9 @@
 import shortid from 'shortid'
 
-class Project {
+class Block {
   constructor () {
     this.id = shortid.generate()
   }
 }
 
-export default Project
+export default Block

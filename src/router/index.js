@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import pageIndex from '@/components/page'
-import layoutSidebar from '@/components/layout/sidebar'
-import formEntries from '@/components/common/form-entries.vue'
+import blockList from '@/components/blocks/edit'
 
 Vue.use(Router)
 
@@ -16,11 +15,11 @@ export default new Router({
       children: [
         {
           path: 'project/:id',
-          component: layoutSidebar
+          component: blockList
         },
         {
-          path: '',
-          component: formEntries
+          path: 'project/:id/edit',
+          component: blockList
         }
       ]
     }
