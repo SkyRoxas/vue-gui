@@ -1,8 +1,12 @@
 import Youtube from './youtube'
+import Text from './text'
 
 class BlockFactory {
   static get list () {
-    return {youtube: Youtube}
+    return {
+      youtube: Youtube,
+      text: Text
+    }
   }
 
   static create (type) {

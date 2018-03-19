@@ -1,29 +1,33 @@
 <template lang="html">
-  <div class="title">
-    <h2>模組列表</h2>
-    <div class="block-box">
-      <ul>
-        <li class="block-item" v-for="(item, index) in blocks" :key="index">
-          <a @click.prevent="createBlock(item.type)" class="block-btn">
-            <Icons :name="item.icon"></Icons>
-            <div>{{item.text}}</div>
-          </a>
-        </li>
-      </ul>
+  <sidebarSecond>
+    <div class="title">
+      <h2>模組列表</h2>
+      <div class="block-box">
+        <ul>
+          <li class="block-item" v-for="(item, index) in blockList" :key="index">
+            <a @click.prevent="createBlock(item.type)" class="block-btn">
+              <Icons :name="item.icon"></Icons>
+              <div>{{item.text}}</div>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-
+    <editYoutube></editYoutube>
+  </sidebarSecond>
 </template>
 
 <script>
 
 import Icons from '@/components/icons/index'
+import sidebarSecond from '@/components/layout/sidebar-second'
 import BlockFactory from '@/models/block'
+import editYoutube from './youtube'
 
 export default {
   data () {
     return {
-      blocks: [
+      blockList: [
         {type: 'youtube', text: 'Youtube', icon: 'Video', disable: true},
         {type: 'text', text: '文字', icon: 'Font', disable: false},
         {type: 'youtube', text: 'Youtube', icon: 'Video', disable: true},
@@ -32,12 +36,26 @@ export default {
     }
   },
   components: {
-    Icons
+    Icons,
+    sidebarSecond,
+    editYoutube
+  },
+  computed: {
+    blocks () {
+      return this.$store.state.project.blocks
+    },
+    selectBlockIndex () {
+      return this.$store.getters['editor/selectBlockIndex']
+    },
+    selectBlock () {
+      return this.$store.state.project.blocks[this.selectBlockIndex]
+    }
   },
   methods: {
     createBlock (type) {
       let block = BlockFactory.create(type)
-      this.$router.push(`edit/block/${block.id}`)
+      this.$store.dispatch('project/add', block)
+      // this.$router.push(`edit/block/${block.id}`)
     }
   }
 }
@@ -45,16 +63,12 @@ export default {
 
 <style lang="sass">
 
-  $column: 2
   $col: 2
   $gutter: 5px
 
   .block-box
     position: relative
     overflow-x: hidden
-    border: 1px solid
-    padding: 10px
-    max-width: 300px
 
   ul
     display: flex
@@ -66,7 +80,7 @@ export default {
     list-style: none
     display: block
     box-sizing: border-box
-    width: 100% / $column
+    width: 100% / $col
     padding-left: $gutter
     padding-right: $gutter
     &:not(:nth-last-child(-n + #{$col}))

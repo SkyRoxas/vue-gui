@@ -1,24 +1,17 @@
 <template lang="html">
   <div>
-    <blockDefault name="Youtube 模組"></blockDefault>
-    {{block}}
+    <blockDefault name="文字 模組"></blockDefault>
   </div>
 </template>
 
 <script>
+
 import blockDefault from './block-default'
 
 export default {
   components: {
     blockDefault
-  },
-  props: {
-    block: {
-      type: Object,
-      required: true
-    }
-  },
-  methods: {}
+  }
 }
 </script>
 

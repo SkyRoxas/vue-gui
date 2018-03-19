@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import pageIndex from '@/components/page'
-import blockList from '@/components/blocks/edit'
+import Preview from '@/components/projects/preview'
+import blockEdit from '@/components/blocks/edit'
 
 Vue.use(Router)
 
@@ -14,12 +15,19 @@ export default new Router({
       component: pageIndex,
       children: [
         {
-          path: 'project/:id',
-          component: blockList
+          path: 'project/:project_id/edit',
+          components: {
+            content: Preview,
+            sidebarSecond: blockEdit
+          }
         },
         {
-          path: 'project/:id/edit',
-          component: blockList
+          name: 'block/edit',
+          path: 'project/:project_id/edit/block/:block_id',
+          components: {
+            content: Preview,
+            sidebarSecond: blockEdit
+          }
         }
       ]
     }

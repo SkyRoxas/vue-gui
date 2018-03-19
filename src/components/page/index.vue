@@ -1,25 +1,29 @@
 <template>
 <div>
   <project></project>
-  <router-view></router-view>
+  <div id="page">
+    <router-view name="sidebarFirst"></router-view>
+    <router-view name="content"></router-view>
+    <router-view name="sidebarSecond"></router-view>
+  </div>
 </div>
 </template>
 
 <script>
-import layoutSidebar from '@/components/layout/sidebar'
 import project from '@/components/projects'
+import sidebarSecond from '@/components/layout/sidebar-second'
 
 export default {
   name: 'pageIndex',
   components: {
-    layoutSidebar,
-    project
+    project,
+    sidebarSecond
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
 h1,
 h2 {
   font-weight: normal;
@@ -37,5 +41,13 @@ li {
 
 a {
   color: #42b983;
+}
+
+#page{
+  display: flex;
+  align-content: stretch;
+  >*{
+    flex: 1;
+  }
 }
 </style>

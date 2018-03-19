@@ -15,8 +15,8 @@ export default {
   methods: {
     createProject () {
       let project = new Project()
+      this.$store.dispatch('project/create', project)
       this.$router.push(`/project/${project.id}/edit`)
-      this.$store.dispatch('project/add')
     }
   }
 }
