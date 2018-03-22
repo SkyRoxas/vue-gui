@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="editbar">
     <navButton msg="建立專案" @click="createProject"></navButton>
-    <navButton msg="儲存專案" @click="createProject"></navButton>
+    <navButton msg="儲存專案" @click="saveProject"></navButton>
   </div>
 </template>
 
@@ -18,7 +18,8 @@ export default {
       let project = new Project()
       this.$store.dispatch('project/create', project)
       this.$router.push(`/project/${project.id}/edit`)
-    }
+    },
+    saveProject () {}
   }
 }
 </script>
