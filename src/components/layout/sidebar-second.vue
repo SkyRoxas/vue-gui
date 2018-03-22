@@ -19,7 +19,5 @@ export default {
     overflow-x: hidden
     box-sizing: border-box
     border-left: 1px solid #bdbdbd
-    height: 200px
-    overflow-y: scroll
 
 </style>

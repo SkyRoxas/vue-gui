@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import project from '@/components/projects'
+import project from '@/components/projects/nav'
 import sidebarSecond from '@/components/layout/sidebar-second'
 
 export default {
