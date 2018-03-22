@@ -13,7 +13,13 @@ export default {
 <style lang="sass" scope>
 
   #sidebar-second
-    max-width: 300px
+    max-width: 350px
     padding: 20px
+    position: relative
+    overflow-x: hidden
+    box-sizing: border-box
+    border-left: 1px solid #bdbdbd
+    height: 200px
+    overflow-y: scroll
 
 </style>

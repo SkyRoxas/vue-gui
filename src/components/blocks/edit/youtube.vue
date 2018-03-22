@@ -1,7 +1,10 @@
 <template lang="html">
   <div>
-    <label>路徑</label>
-    <input type="text" name="" v-model="block.href" @input="updateBlock">
+    <h3>Youtube 模組</h3>
+    <div>
+      <label>路徑:</label>
+      <input type="text" name="" v-model="url" @input="updateBlock">
+    </div>
   </div>
 </template>
 
@@ -9,20 +12,35 @@
 export default {
   data () {
     return {
-      block: {
-        url: ''
-      }
+      url: ''
+      // https://www.youtube.com/watch?v=lYejLEYO4Zw
     }
   },
-  computed: {},
+  computed: {
+    src () {
+      if (this.url.match(/\?v=(.+)/)) {
+        const youtubeId = this.url.match(/\?v=(.+)/)[1]
+        return `https://www.youtube.com/embed/${youtubeId}`
+      }
+      return ''
+    },
+    block () {
+      return this.$store.getters['project/getSelectBlock']
+    }
+  },
   methods: {
     updateBlock () {
-      const block = this.block
+      const block = {
+        url: this.url,
+        src: this.src
+      }
       this.$store.dispatch('project/update', block)
     }
   }
 }
 </script>
 
-<style lang="css">
+<style lang="sass">
+  input
+    // width: 100%
 </style>

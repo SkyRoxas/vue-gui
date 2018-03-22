@@ -15,6 +15,7 @@ export default new Router({
       component: pageIndex,
       children: [
         {
+          name: 'project/edit',
           path: 'project/:project_id/edit',
           components: {
             content: Preview,

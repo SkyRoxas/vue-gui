@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="fullscreen">
   <project></project>
   <div id="page">
     <router-view name="sidebarFirst"></router-view>
@@ -41,6 +41,12 @@ li {
 
 a {
   color: #42b983;
+}
+
+.fullscreen{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 #page{

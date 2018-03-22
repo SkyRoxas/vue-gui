@@ -27,13 +27,16 @@ export default {
     },
     update (state, inputObject) {
       let blocks = state.blocks
-      let updateBlockId = this.getters['project/getUpdateBlockId']
-      Vue.set(blocks, blocks.findIndex(el => el.id === updateBlockId), inputObject)
+      let updateBlockId = this.getters['project/getSelectBlock']['id']
+      let updateBlockIndex = blocks.findIndex(el => el.id === updateBlockId)
+      Vue.set(blocks, updateBlockIndex, Object.assign(blocks[updateBlockIndex], inputObject))
     }
   },
   getters: {
-    getUpdateBlockId (state, getter, rootState) {
-      return rootState.route.params.block_id
+    getSelectBlock (state, getter, rootState) {
+      const blockId = rootState.route.params.block_id
+      const selectIndex = state.blocks.findIndex(el => el.id === blockId)
+      return state.blocks[selectIndex]
     }
   }
 }
