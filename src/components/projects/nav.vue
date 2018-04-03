@@ -19,7 +19,9 @@ export default {
       this.$store.dispatch('project/create', project)
       this.$router.push(`/project/${project.id}/edit`)
     },
-    saveProject () {}
+    saveProject () {
+      this.$store.dispatch('storage/save', this.$store.state.project)
+    }
   }
 }
 </script>
